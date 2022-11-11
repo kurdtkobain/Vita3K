@@ -24,6 +24,7 @@
 
 #include <condition_variable>
 #include <mutex>
+#include <thread>
 
 struct SDL_Cursor;
 struct SDL_Window;
@@ -60,6 +61,8 @@ struct State {
     uint32_t programs_count_pre_compiled = 0;
 
     bool should_display;
+
+    std::thread::id worker_thread_id;
 
     virtual bool init(const char *base_path, const bool hashless_texture_cache) = 0;
     // called after a game has been chosen and right before it is started
